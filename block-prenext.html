@@ -1,0 +1,4 @@
+<div class="post-prenext">
+    <div>新一篇：{{if $.prePost}}<a href="{{$.postUrl}}/{{$.prePost.UrlTitle}}">{{$.prePost.Title}}</a>{{else}}<span>No Post</span>{{end}}</div>
+    <div>早一篇：{{if $.nextPost}}<a href="{{$.postUrl}}/{{$.nextPost.UrlTitle}}">{{$.nextPost.Title}}</a>{{else}}<span>No Post</span>{{end}}</div>
+</div>

@@ -1,0 +1,75 @@
+
+          <div class="pane pane-sm sidebar print-dont" id="sidebar">
+
+            <div class="bloginfo-card">
+              <div class="bloginfo-box" id="bloginfoBox">
+                  <img class="bloginfo-logo" src="{{$.blogInfo.Logo}}" alt="{{$.blogInfo.Title}}">
+                  <h1 class="bloginfo-title">{{$.blogInfo.Title}}</h1>
+                  <p class="bloginfo-desc">{{$.blogInfo.SubTitle}}</p>
+              </div>
+
+              <div class="userinfo-box" id="userinfoBox">
+                <div class="userinfo-group">
+                  <img class="userinfo-avatar" src="{{$.blogInfo.UserLogo}}" alt="{{$.blogInfo.Username}}">
+                  <span class="userinfo-name">{{$.blogInfo.Username}}</span>
+                </div>
+              </div>
+            </div>
+
+            <nav class="nav-group">
+              <h5 class="nav-group-title">页面</h5>
+              <a class="nav-group-item" href="{{.indexUrl}}">
+                <i class="fa fa-home"></i>
+                主页
+              </a>
+              <h5 class="nav-group-title"></h5>{{range $.cates}}
+              <a class="nav-group-item{{if eq .CateId $.curCateId}} active{{end}}" href="{{$.cateUrl}}/{{.UrlTitle}}">
+                <i class="fa fa-inbox"></i>
+                {{.Title}}
+              </a>{{end}}
+              <h5 class="nav-group-title"></h5>{{range $.singles}}
+              <a class="nav-group-item{{if eq $.curSingleId .SingleId}} active{{end}}" href="{{$.singleUrl}}/{{.UrlTitle}}">
+                <i class="fa fa-bookmark"></i>
+                {{.Title}}
+              </a>{{end}}
+            </nav>
+
+            <nav class="nav-group">
+              <h5 class="nav-group-title">检索</h5>
+              <a class="nav-group-item{{if $.curIsArchive}} active{{end}}" href="{{.archiveUrl}}">
+                <i class="fa fa-archive"></i>
+                归档
+              </a>
+              <a class="nav-group-item{{if $.curIsTags}} active{{end}}" href="{{.tagsUrl}}">
+                <i class="fa fa-tags"></i>
+                标签
+              </a>
+              <span class="nav-group-item">
+                <form class="search-form" id="search" onsubmit="search(event);return false;">
+                <i class="fa fa-search" onclick="search(event);"></i>
+                <input class="searchInput" type="text" name="searchInput" id="searchInput" placeholder="搜索" onsubmit="search()">
+                </form>
+              </span>
+            </nav>
+
+            <nav class="nav-group">
+              <h5 class="nav-group-title">友情链接</h5>{{range $.themeInfo.FriendLinks}}
+              <a class="nav-group-item" href="{{.Url}}" target="_blank">
+                <i class="fa fa-{{.faicon}}"></i>
+                {{.Title}}
+              </a>{{end}}
+            </nav>
+
+            <nav class="nav-group">
+              <h5 class="nav-group-title">站长工具</h5>
+              <a class="nav-group-item" href="https://leanote.com/note" target="_blank">
+                <i class="fa fa-book"></i>
+                我的笔记
+              </a>
+              <a class="nav-group-item" href="https://leanote.com/member/blog/theme" target="_blank">
+                <i class="fa fa-tachometer"></i>
+                博客设置
+              </a>
+            </nav>
+            <hr class="height2em"/>
+          </div>

@@ -1,0 +1,230 @@
+
+<div class="paperflow" id="posts">
+
+
+{{if $.curIsTags}}
+<div class="paper">
+    <div class="post-containter" id="post">
+
+        <div class="post-meta">
+            <h1 class="post-title"><a href="{{$.tagsUrl}}" title="标签">标签</a></h1>
+            <div class="post-print print-only">
+                <p class="post-author">作者：{{$.blogInfo.Username}}</p>
+                <p>{{$.blogInfo.Title}}  {{$.indexUrl}}</p>
+            </div>
+        </div>
+
+        <div class="post-content" id="content">
+            <ul>{{range $.tags}}
+            <li><a href="{{$.tagPostsUrl}}/{{.Tag}}">{{.Tag}} {{.Count}}</a></li>
+            {{end}}</ul>
+        </div>
+
+    </div>
+</div>
+
+
+{{else if $.curIsSingle}}
+<div class="paper">
+    <div class="post-containter" id="post">
+
+        <div class="post-meta">
+            <h1 class="post-title"><a href="{{$.singleUrl}}/{{$.single.UrlTitle}}" title="{{$.single.Title}}">{{$.single.Title}}</a></h1>
+            <div class="post-print print-only">
+                <p class="post-author">作者：{{$.blogInfo.Username}}</p>
+                <p>{{$.blogInfo.Title}}  {{$.indexUrl}}</p>
+            </div>
+        </div>
+
+        <div class="post-content" id="content">
+            {{$.single.Content | raw}}
+        </div>
+
+    </div>
+</div>
+
+
+{{else if $.curIsTags}}
+<div class="paper">
+    <div class="post-containter" id="post">
+
+        <div class="post-meta">
+            <h1 class="post-title"><a href="{{$.singleUrl}}/{{$.single.UrlTitle}}" title="{{$.single.Title}}">{{$.single.Title}}</a></h1>
+            <div class="post-print print-only">
+                <p class="post-author">作者：{{$.blogInfo.Username}}</p>
+                <p>{{$.blogInfo.Title}}  {{$.indexUrl}}</p>
+            </div>
+        </div>
+
+        <div class="post-content" id="content">
+            {{$.single.Content | raw}}
+        </div>
+
+    </div>
+</div>
+
+
+{{else if $.curIsPost}}
+<div class="paper">
+    <div class="post-containter" id="post">
+
+        <div class="post-meta">
+            <h1 class="post-title">{{if $.post.Title}}<a href="{{$.postUrl}}/{{$.post.UrlTitle}}" title="{{$.post.Title}}">{{$.post.Title}}</a>{{else}}<a href="{{$.postUrl}}/{{.UrlTitle}}" title="无题">无题</a>{{end}}</h1>
+            <div class="post-print">{{if $.post.Tags}}
+                <p>{{blogTags $ $.post.Tags}}</p>{{end}}
+                <p class="post-author print-only">作者：{{$.blogInfo.Username}}</p>
+                <p>{{$.post.PublicTime | datetime}}</p>
+                <p class="post-ref print-only">{{$.blogInfo.Title}}  {{$.indexUrl}}</p>
+            </div>
+        </div>
+
+        <div class="post-content {{if $.post.IsMarkdown }}markdown-content{{end}}" id="content">
+            {{if $.post.IsMarkdown }}
+            <div id="markdownContent" style="display: none"><!-- 用textarea装html, 防止得到的值失真 -->
+                <textarea>{{$.post.Content | raw}}</textarea>
+            </div>
+            <div style="padding: 20px; text-align: center">
+                <p>读取中……</p>
+            </div>
+            {{else}}{{$.post.Content | raw}}{{end}}
+        </div>
+
+    </div>
+</div>
+
+
+<div class="paper-addon-box">
+{{if $.themeInfo.CanGiveMoney}}
+<div class="paper-addon print-dont">
+{{template "block-givemoney.html" $}}
+</div>{{end}}
+
+<div class="paper-addon block-copyright">
+    <p><i class="fa fa-copyright"></i>&nbsp;{{$.themeInfo.CopyrightAnnouncement}}</p>
+</div>
+
+<div class="paper-addon print-dont hide">
+{{template "block-likeshare.html" $}}
+</div>
+
+<div class="paper-addon print-dont hide">
+{{template "block-authorinfo.html" $}}
+</div>
+
+<div class="paper-addon post-info print-dont hide">
+    <span><i class="fa fa-clock-o"></i>&nbsp;{{$.post.PublicTime | datetime}}&nbsp;&nbsp;<span class="fa fa-eye"></span>&nbsp;{{$.post.ReadNum}}&nbsp;&nbsp;<span class="fa fa-thumbs-o-up"></span>&nbsp;{{$.post.LikeNum}}&nbsp;&nbsp;<span class="fa fa-comments-o"></span>&nbsp;{{$.post.CommentNum}}&nbsp;&nbsp;{{if $.post.Tags}}<i class="fa fa-bookmark-o"></i>&nbsp;{{blogTags $ $.post.Tags}}{{end}}</span>
+</div>
+
+</div>
+
+
+{{end}}
+
+
+
+
+{{if $.curIsPost}}
+
+<!--==================== 评论区域 开始 ====================-->
+
+<div class="paper-attach">
+
+<section class="print-dont">
+{{template "block-prenext.html" $}}
+</section>
+
+<section{{if $.themeInfo.DontPrintComment}} class="print-dont"{{end}}>
+{{template "block-comment.html" $}}
+</section>
+
+
+<!-- 一些在share_comment.js 需要使用的变量 -->
+<script>
+    var siteUrl = "{{$.siteUrl}}"; // common.js需要
+    // 以下 share_comment.js需要
+    var blogInfo={UserId: "{{$.blogInfo.UserId}}", OpenComment: {{$.blogInfo.OpenComment}}, CommentType: "{{$.blogInfo.CommentType}}"};
+    var noteId = "{{$.post.NoteId}}"; //
+    var preLikeNum = +"{{$.post.LikeNum}}";
+    var commentNum = +"{{$.post.CommentNum}}";
+</script>
+
+<!-- 共享与评论css -->
+<link href="{{$.themeBaseUrl}}/share_comment.css" type="text/css" rel="stylesheet"/>
+<!-- 一些公用的js -->
+<script src="{{$.blogCommonJsUrl}}"></script>
+<script src="{{$.themeBaseUrl}}/script-fornav.js"></script>
+<script src="{{$.siteUrl}}/public/blog/js/jsrender.js"></script>
+<script src="{{$.siteUrl}}/public/blog/js/jquery-cookie-min.js"></script>
+<script src="{{$.siteUrl}}/public/blog/js/bootstrap-dialog.min.js"></script>
+<script src="{{$.siteUrl}}/public/blog/js/jquery.qrcode.min.js"></script>
+<!-- share && comment -->
+<script src="{{$.shareCommentJsUrl}}"></script>
+<!-- <script src="{{$.themeBaseUrl}}/share_comment.js"></script> -->
+
+
+<section class="block-duoshuo print-dont">
+{{template "block-duoshuo.html" $}}
+</section>
+
+</div>
+
+<!--<hr class="height2em"/>-->
+
+<!--==================== 评论区域 结束 ====================-->
+{{end}}
+
+
+</div>
+
+
+{{if $.curIsPost}}
+<!--==================== 页面解析 开始 ====================-->
+
+<!-- 是markdown -->
+{{if $.post.IsMarkdown }}
+<script src="http://leanote.com/public/libs/md2html/md2html.js"></script>
+<script>
+var content = $.trim($("#markdownContent textarea").val());
+md2Html(content, $("#content"), function(html) {
+    $("pre").addClass("prettyprint linenums");
+    prettyPrint();
+    initNav();
+    weixin();
+});
+</script>
+
+<!-- 不是markdown -->
+{{else}}
+<script>
+$(function() {
+    initNav();
+    weixin();
+});
+</script>
+
+{{end}}
+
+<script>
+setTimeout(function(){
+    $(".post-content p > img:only-child").css({
+        "display":"block",
+        "margin":"0 auto"
+    });
+    $(".post-content p > img:only-child").parent().css({
+        "padding":"0",
+        "text-align":"center",
+        "background-color":"transparent"
+    });
+    $(".post-content div > svg:only-child").parent().css({
+        "padding":"0",
+        "text-align":"center",
+        "background-color":"#f7f7f7"
+    });
+    $(".post-content table").wrap("<p style='padding:0px;'></p>");
+},500);
+
+</script>
+
+<!--==================== 页面解析 结束 ====================-->
+{{end}}
+

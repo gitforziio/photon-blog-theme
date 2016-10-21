@@ -1,0 +1,53 @@
+
+      <header class="toolbar toolbar-header print-dont">
+        <div class="toolbar-actions">
+
+          <button class="btn btn-default" id="btnToggleNav">
+            <i class="fa fa-navicon"></i>
+          </button>
+          <button class="btn btn-default" id="btnToggleNavphone">
+            <i class="fa fa-navicon"></i>
+          </button>
+
+          <div class="btn-group dont-show-on-phone pull-right">
+            <button class="btn btn-default pull-right" id="btnFavorite">
+              <i class="fa fa-star"></i>
+            </button>{{if $.curIsPost}}
+            <button class="btn btn-default pull-right" id="btnPrint">
+              <i class="fa fa-print"></i>
+            </button>
+            <button class="btn btn-default btn-dropdown">
+              <i class="fa fa-ellipsis-h"></i>
+            </button>{{end}}
+          </div>{{if $.curIsPost}}
+
+          <button class="btn btn-default btn-dropdown pull-right">
+            <i class="fa fa-list"></i>
+          </button>{{end}}
+
+<script type="text/javascript">
+  function AddFavorite(title,url){
+  try{window.external.addFavorite(url,title);}
+  catch(e){
+   try{window.sidebar.addPanel(title,url,"");}
+   catch(e){
+     alert("抱歉，您所使用的浏览器不支持按钮收藏功能。\n\n请使用Ctrl+D或command+D手动添加啦~");
+     }
+   }
+  }
+  function AddFavoriteThisPage(){
+    AddFavorite(document.title,window.location.href);
+  }
+  $("#btnToggleNavphone").click(function(){
+    $("#sidebar").slideToggle();
+  });
+  $("#btnToggleNav").click(function(){
+    $("#sidebar").toggle();
+  });
+  $("#btnPrint").click(function(){window.print()});
+  $("#btnFavorite").click(function(){AddFavoriteThisPage()});
+</script>
+
+        </div>
+
+      </header>

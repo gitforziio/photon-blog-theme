@@ -1,0 +1,35 @@
+<div class="post-likeshare">
+
+<!-- 赞 -->
+<div class="widget widget-zan entry-controls clearfix">
+	<div class="widget-zan-box1 vote-section-wrapper clearfix">
+		<button class="widget-zan-btn btn-zan" id="likeBtn"><i class="fa fa-thumbs-o-up"></i><br><span id="likeNum">{{$.post.LikeNum}}</span></button>
+	</div>
+	<div class="widget-zan-box2 right-section">
+		<div id="weixinQRCode"></div>
+		<div class="dropdown">
+			<button class="widget-zan-btn btn-weibo btn-share"><i class="fa fa-weibo"></i></button>
+			<button class="widget-zan-btn btn-weixin btn-share"><i class="fa fa-wechat"></i></button>
+			<button class="widget-zan-btn btn-more dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="#" class="btn-share tencent-weibo"><i class="fa fa-tencent-weibo"></i> Tencent Weibo</a></li>
+				<li><a href="#" class="btn-share qq"><i class="fa fa-qq"></i> QQ Zone</a></li>
+				<li><a href="#" class="btn-share renren"><i class="fa fa-renren"></i> RenRen</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script type="text/x-jsrender" id="tLikers">
+[[for users]]
+  <a id="liker_[[:UserId]]" title="[[:BlogTitle]]" href="[[:BlogUrl]]" target="_blank" class="voter">
+    [[if Logo]]
+      <img alt="avatar" class="avatar-small" src="[[:Logo]]">
+    [[else]]
+      <img alt="avatar" class="avatar-small" src="/images/blog/default_avatar.png">
+    [[/if]]
+  </a>
+[[/for]]
+</script>
+
+</div>

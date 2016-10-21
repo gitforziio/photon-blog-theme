@@ -1,0 +1,515 @@
+/**
+ * css forked from https://github.com/GitbookIO/gitbook 
+ * www.gitbook.com
+ * Apache License
+ * https://github.com/GitbookIO/gitbook/blob/master/LICENSE
+ **/
+
+.post-content {
+    color: #555;
+    line-height: 1.6;
+    font-size:14px;
+}
+
+@media screen and (min-width:1200px){
+    .post-content {
+        line-height: 1.8;
+        font-size:16px;
+    }
+}
+
+@media screen and (max-width:740px){
+    .post-content * {
+        word-break:break-all;
+    }
+}
+
+@media print{
+    .post-content {
+        line-height: 1.5;
+        font-size:12px;
+    }
+}
+
+/*#write{
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 20px 30px 40px 30px;
+	padding-top: 20px;
+    padding-bottom: 100px;
+}
+*/
+.post-content > ul:first-child,
+.post-content > ol:first-child{
+    margin-top: 30px;
+}
+
+.post-content > p,
+.post-content > pre,
+.post-content > div {
+    padding: 0 40px;
+}
+.post-content ul,
+.post-content ol {
+    padding-left: 30px;
+}
+.post-content > ul,
+.post-content > ol,
+.post-content > dl {
+    padding: 0 40px 0 60px;
+}
+.post-content > h1 {
+    padding: 0 40px;
+    text-align: center;
+}
+.post-content > h2 {
+    padding: 0 40px 0 20px;
+}
+.post-content > h3 {
+    padding: 0 40px 0 30px;
+}
+.post-content > h4,
+.post-content > h5,
+.post-content > h6 {
+    padding: 0 40px;
+}
+.post-content blockquote {
+    border-left: 2px solid #dddddd;
+    border-right: 2px solid #dddddd;
+    padding: 0 15px;
+    color: #777777;
+}
+.post-content blockquote blockquote {
+    padding-right: 0;
+}
+.post-content > blockquote {
+    border-left: 4px solid #dddddd;
+    border-right: 4px solid #dddddd;
+    padding: 0 40px;
+    color: #777777;
+}
+
+@media screen and (min-width:1200px){
+    .post-content > ul:first-child,
+    .post-content > ol:first-child{
+        margin-top: 40px;
+    }
+    
+    .post-content > p,
+    .post-content > pre,
+    .post-content > div {
+        padding: 0 60px;
+    }
+    .post-content ul,
+    .post-content ol {
+        padding-left: 50px;
+    }
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding: 0 60px 0 80px;
+    }
+    .post-content > h1 {
+        padding: 0 60px;
+        text-align: center;
+    }
+    .post-content > h2 {
+        padding: 0 60px 0 40px;
+    }
+    .post-content > h3 {
+        padding: 0 60px 0 70px;
+    }
+    .post-content > h4,
+    .post-content > h5,
+    .post-content > h6 {
+        padding: 0 60px;
+    }
+    .post-content blockquote {
+        border-left: 4px solid #dddddd;
+        border-right: 4px solid #dddddd;
+        padding: 0 25px;
+        color: #777777;
+    }
+    .post-content blockquote blockquote {
+        padding-right: 0;
+    }
+    .post-content > blockquote {
+        border-left: 6px solid #dddddd;
+        border-right: 6px solid #dddddd;
+        padding: 0 60px;
+        color: #777777;
+    }
+}
+
+@media screen and (max-width:740px){
+    .post-content > ul:first-child,
+    .post-content > ol:first-child{
+        margin-top: 25px;
+    }
+    
+    .post-content > p,
+    .post-content > pre,
+    .post-content > div {
+        padding: 0 20px;
+    }
+    .post-content ul,
+    .post-content ol {
+        padding-left: 30px;
+    }
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding: 0 20px 0 40px;
+    }
+    .post-content > h1 {
+        padding: 0 20px;
+        text-align: center;
+    }
+    .post-content > h2 {
+        padding: 0 20px 0 10px;
+    }
+    .post-content > h3 {
+        padding: 0 20px 0 15px;
+    }
+    .post-content > h4,
+    .post-content > h5,
+    .post-content > h6 {
+        padding: 0 20px;
+    }
+    .post-content blockquote {
+        border-left: 2px solid #dddddd;
+        border-right: 2px solid #dddddd;
+        padding: 0 15px;
+        color: #777777;
+    }
+    .post-content blockquote blockquote {
+        padding-right: 0;
+    }
+    .post-content > blockquote {
+        border-left: 3px solid #dddddd;
+        border-right: 3px solid #dddddd;
+        padding: 0 20px;
+        color: #777777;
+    }
+}
+
+.post-content > *:first-child {
+    margin-top: 0 !important;
+}
+.post-content > *:last-child {
+    margin-bottom: 0 !important;
+}
+.post-content a {
+    color: #4183C4;
+}
+.post-content h1,
+.post-content h2 {
+    position: relative;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+.post-content h1:hover a.anchor,
+.post-content h2:hover a.anchor,
+.post-content h3:hover a.anchor,
+.post-content h4:hover a.anchor,
+.post-content h5:hover a.anchor,
+.post-content h6:hover a.anchor {
+    /*background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;*/
+    text-decoration: none;
+}
+.post-content h1 tt,
+.post-content h1 code {
+    font-size: inherit;
+}
+.post-content h2 tt,
+.post-content h2 code {
+    font-size: inherit;
+}
+.post-content h3 tt,
+.post-content h3 code {
+    font-size: inherit;
+}
+.post-content h4 tt,
+.post-content h4 code {
+    font-size: inherit;
+}
+.post-content h5 tt,
+.post-content h5 code {
+    font-size: inherit;
+}
+.post-content h6 tt,
+.post-content h6 code {
+    font-size: inherit;
+}
+.post-content h1 {
+    padding-bottom: .3em;
+    font-size: 2em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+.post-content h2 {
+    padding-bottom: .3em;
+    font-size: 1.7em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+.post-content h3 {
+    font-size: 1.4em;
+    line-height: 1.4;
+}
+.post-content h4 {
+    font-size: 1.2em;
+}
+.post-content h5 {
+    font-size: 1em;
+}
+.post-content h6 {
+   font-size: 1em;
+    color: #777;
+}
+.post-content table{
+    margin: 1em auto;
+    width: auto;
+}
+.post-content > p{
+    overflow: auto;
+}
+.preview-content > p{
+    overflow: auto;
+}
+.post-content p,
+.post-content blockquote,
+.post-content ul,
+.post-content ol,
+.post-content dl{
+    margin: 0.8em 0;
+    max-width: 100%;
+    /*overflow: auto;*/
+}
+.post-content li>ol,
+.post-content li>ul {
+    margin: 0 0;
+}
+.post-content hr {
+    height: 1px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.post-content body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.post-content body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.post-content body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.post-content body > h3:first-child,
+.post-content body > h4:first-child,
+.post-content body > h5:first-child,
+.post-content body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.post-content a:first-child h1,
+.post-content a:first-child h2,
+.post-content a:first-child h3,
+.post-content a:first-child h4,
+.post-content a:first-child h5,
+.post-content a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.post-content h1 p,
+.post-content h2 p,
+.post-content h3 p,
+.post-content h4 p,
+.post-content h5 p,
+.post-content h6 p {
+    margin-top: 0;
+}
+.post-content li p.first {
+    display: inline-block;
+}
+
+.post-content ul:first-child,
+.post-content ol:first-child {
+    margin-top: 0;
+}
+.post-content ul:last-child,
+.post-content ol:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.post-content table {
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding: 0;
+}
+/*.post-content table thead {
+    border-bottom: 1px solid #ddd;
+}
+.post-content table thead tr:first-child {
+    border-bottom: 1px solid #ddd;
+}*/
+.post-content table thead tr th {
+    border-bottom: 1px solid #ddd;
+}
+/*.post-content table tbody tr:first-child {
+    border-top: 1px solid #ddd;
+}*/
+.post-content table tr {
+    border-top: 0px solid #eee;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+.post-content table thead tr {
+    background-color: #fafafa;
+}
+.post-content table tbody tr:nth-child(2n) {
+    background-color: #fafafa;
+}
+.post-content table tr th {
+    font-weight: bold;
+    border: 0px solid #eee;
+    margin: 0;
+    padding: 6px 13px;
+}
+.post-content table tr td {
+    border: 0px solid #eee;
+    margin: 0;
+    padding: 6px 13px;
+}
+.post-content table tr th:first-child,
+.post-content table tr td:first-child {
+    margin-top: 0;
+}
+.post-content table tr th:last-child,
+.post-content table tr td:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.post-content .CodeMirror-gutters {
+    border-right: 1px solid #ddd;
+}
+
+.post-content .md-fences,
+.post-content code,
+.post-content kbd,
+.post-content .kbd,
+.post-content tt {
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+.post-content pre code {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.post-content .md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 0.2em 1em;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+.post-content .task-list{
+	padding-left: 0;
+}
+
+.post-content .task-list-item {
+	padding-left:32px;
+}
+
+.post-content .task-list-item input {
+  top: 3px;
+  left: 8px;
+}
+
+
+.post-content .md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.post-content .mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.post-content .md-image>.md-meta {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.post-content .md-tag{
+	color: inherit;
+}
+
+.post-content .md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+

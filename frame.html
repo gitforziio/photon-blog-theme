@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="format-detection" content="telephone=no, email=no"/>
+<meta name="description" content="~"/>
+<meta name="keywords" content="前端,博客,前端博客,html,css,javascript,python,django,眼动仪,psychtoolbox,matlab,室车,roomcar,自动言语机"/>
+<link rel="shortcuticon" type="image/png" href="{{$.blogInfo.Logo}}"/>
+<link rel="icon" type="image/png" href="{{$.blogInfo.Logo}}"/>
+<title>{{if $.curIsIndex}}{{$.blogInfo.Title}}{{else if $.curIsCate}}{{$.curCateTitle}} | {{$.blogInfo.Title}}{{else if $.curIsSearch}}搜索-{{$.keywords}} | {{$.blogInfo.Title}}{{else if $.curIsTags}}标签 | {{$.blogInfo.Title}}{{else if $.curIsTagPosts}}标签-{{$.curTag}} | {{$.blogInfo.Title}}{{else if $.curIsPost}}{{if $.post.Title}}{{$.post.Title}}{{else}}无题{{end}} | {{$.blogInfo.Title}}{{else if $.curIsSingle}}{{$.single.Title}} | {{$.blogInfo.Title}}{{else if $.curIsArchive}}归档 | {{$.blogInfo.Title}}{{else}}{{$.blogInfo.Title}}{{end}}</title>
+<!--<link href="{{$.bootstrapCssUrl}}" rel="stylesheet">-->
+<link href="{{$.themeBaseUrl}}/photon.css" rel="stylesheet">
+<link href="{{$.themeBaseUrl}}/style.css" rel="stylesheet">
+<link href="{{$.themeBaseUrl}}/markdown.css" rel="stylesheet">
+<link href="{{$.fontAwesomeUrl}}" rel="stylesheet">
+<!-- <link href="{{$.jQueryUrl}}" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+<script>function log(o){}</script>
+<style></style>
+<!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+
+
+
+  <body>
+
+{{template "script-import.html" $}}
+{{template "script-highlight.html" $}}
+
+    <div class="window">
+{{template "block-header.html" $}}
+
+      <div class="window-content">
+        <div class="pane-group">
+
+{{template "block-sidebar.html" $}}
+
+          <div class="pane mainbox">
+
+
+{{if (or (or (or $.curIsIndex $.curIsCate) $.curIsSearch) $.curIsTagPosts)}}
+
+{{template "main-list.html" $}}
+
+{{else if $.curIsArchive}}
+
+{{template "main-archive.html" $}}
+
+{{else if (or (or $.curIsPost $.curIsSingle) $.curIsTags)}}
+
+{{template "main-post.html" $}}
+
+{{else}}
+
+{{template "main-404.html" $}}
+
+{{end}}
+
+{{template "script-forsearch.html" $}}
+<script>
+//bug:“转圈圈”也会被认为是“转”的标签，这个可以通过[innerHTML='转']来修正，但是懒得搞了。
+var forwardWords=["forward","Forward","repost","Repost","转","转载","转发","收藏","剪藏"];
+var quesqionWords=["question","Question","ask","Ask","issue","Issue","问题","提问"];
+var teachingWords=["tips","Tips","skill","Skill","tip","Tip","work","Work","作品","教程","技巧"];
+var ideaWords=["idea","Idea","ideas","Ideas","概念","想法","点子","主意","主题"];
+var testWords=["test","Test","testing","Testing","测试"];
+setTimeout(function(){
+	for(var i=0;i<forwardWords.length;i++){
+		$(".label:contains('"+forwardWords[i]+"')").addClass("label-primary");
+	}
+	for(var i=0;i<quesqionWords.length;i++){
+		$(".label:contains('"+quesqionWords[i]+"')").addClass("label-warning");
+	}
+	for(var i=0;i<teachingWords.length;i++){
+		$(".label:contains('"+teachingWords[i]+"')").addClass("label-success");
+	}
+	for(var i=0;i<ideaWords.length;i++){
+		$(".label:contains('"+ideaWords[i]+"')").addClass("label-info");
+	}
+	for(var i=0;i<testWords.length;i++){
+		$(".label:contains('"+testWords[i]+"')").addClass("label-danger");
+	}
+},200);
+</script>
+
+          </div>
+        </div>
+      </div>
+
+{{template "block-footer.html" $}}
+
+    </div>
+
+  </body>
+</html>

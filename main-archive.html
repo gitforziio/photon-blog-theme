@@ -1,0 +1,27 @@
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>更新时间</th>
+      <th>标题</th>
+      <th><i class="fa fa-eye"></i></th>
+      <th><i class="fa fa-comments-o"></i></th>
+      <th><i class="fa fa-thumbs-o-up"></i></th>
+      <!-- <th>文章概要</th> -->
+      <th>标签</th>
+      <th>友好Url</th>
+    </tr>
+  </thead>
+  <tbody>{{range $.archives}}{{$year := .Year}}{{range .MonthAchives}}{{range .Posts}}
+    <tr>
+      <td>{{dateFormat .UpdatedTime "2006-01-02"}}</td>
+      <td class="width-limit-20">{{if .Title}}<a href="{{$.postUrl}}/{{.UrlTitle}}">{{.Title}}</a>{{else}}<a href="{{$.postUrl}}/{{.UrlTitle}}">无题</a>{{end}}</td>
+      <td>{{.ReadNum}}</td>
+      <td>{{.CommentNum}}</td>
+      <td>{{.LikeNum}}</td>
+      <!-- <td class="width-limit-20">{{.Desc}}</td> -->
+      <td>{{if .Tags}}{{blogTags $ .Tags}}{{else}}none{{end}}</td>
+      <td class="width-limit-20"><a href="{{$.postUrl}}/{{.UrlTitle}}">{{.UrlTitle}}</a></td>
+    </tr>{{end}}{{end}}{{end}}
+  </tbody>
+</table>

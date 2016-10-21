@@ -1,0 +1,45 @@
+<div class="paperflow" id="posts">
+
+{{range $.posts}}
+
+<div class="paper-inflow-container">
+    <div class="each-post">
+
+        <div class="paper-header post-info">
+            <span><i class="fa fa-clock-o"></i>&nbsp;{{.PublicTime | datetime}}&nbsp;|&nbsp;<span class="fa fa-eye"></span>&nbsp;{{.ReadNum}}&nbsp;|&nbsp;{{.CommentNum}}条评论<span>{{if .Tags}}&nbsp;|&nbsp;<i class="fa fa-bookmark-o"></i>&nbsp;{{blogTags $ .Tags}}{{end}}</span></span>
+        </div>
+
+        <div class="paper-inflow">
+            <h2 class="each-post-title">{{if .Title}}<a href="{{$.postUrl}}/{{.UrlTitle}}" title="{{.Title}}">{{.Title}}</a>{{else}}<a href="{{$.postUrl}}/{{.UrlTitle}}" title="无题">无题</a>{{end}}</h2>
+
+            <div class="each-post-content">
+                {{.Abstract | raw}}
+            </div>
+        </div>
+
+        <div class="paper-footer">
+            <a class="each-post-more" href="{{$.postUrl}}/{{.UrlTitle}}" title="{{.Title}}">阅读全文</a>
+        </div>
+
+    </div>
+</div>
+
+{{else}}
+
+<div class="paper-inflow-container">
+    <div class="each-post">
+        <div class="paper-inflow">
+            <h2 class="each-post-title">暂无内容</h2>
+
+            <div class="each-post-content">
+                <div><div><p>暂无内容。</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{end}}
+
+</div>
+
+{{template "block-paging.html" $}}

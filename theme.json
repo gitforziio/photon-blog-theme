@@ -1,0 +1,48 @@
+/*
+以下是本主题的配置, 采用JSON格式
+其中Name, Version, Author, AuthorUrl请勿更改
+你也可以定义其它的配置, 在模板文件使用 $.themeInfo.Xxxxx来获取值(注意首字大写)
+
+注意: 
+1) JSON语法严格, 键必须用双引号, 最后不得有空','来结尾
+2) 以下配置不能包含任何注释, 不然解析会出错!
+
+配置说明：
+* Name 主题名。
+* Desc 主题说明。
+* Version 主题版本。
+* Author 主题的作者。
+* AuthorUrl 作者的链接。
+
+* DontPrintComment 留空则在打印时带评论，不留空则在打印时不带评论。
+* FriendLinks 友情链接。
+* PersonalLinks 个人链接，faicon是fontawesome图标(http://fontawesome.io/icons/)的css类<i class="fa fa-xxx"></i>中接在“fa-”后面的词缀。
+
+*/
+{
+    "Name": "photon",
+    "Desc": "photon 20161011|打印时格式良好。|请在theme.json中进行设置。",
+    "Version": "20161011",
+    "Author": "roomcar",
+    "AuthorUrl": "http://roomcar.leanote.com/post/leanote-theme-photon",
+    "DontPrintComment": "好呀好呀~",
+    "CanGiveMoneyDefult":"要的要的",
+    "CanGiveMoney":"",
+    "MoneyNotice": "通过上方按钮请我喝茶 (='ω'=)",
+    "CopyrightAnnouncementDefult": "博主注意：请在theme.json中修改版权声明，如“某某某原创文章，转载请注明出处”。另外，下方的打赏二维码请更换为自己的！否则赏钱打给roomcar了他可不会还给你啊！",
+    "CopyrightAnnouncement": "原创文章，欢迎注明出处转载。",
+    "FriendLinks": [
+        {"Title": "roomcar 主题作者", "Url": "http://roomcar.leanote.com", "faicon": "user"},
+        {"Title": "TriDict", "Url": "http://tridict.leanote.com", "faicon": "bookmark"},
+        {"Title": "leanote", "Url": "http://leanote.com", "faicon": "star"},
+        {"Title": "lea++", "Url": "http://lea.leanote.com", "faicon": "star"},
+        {"Title": "leanote BBS", "Url": "http://bbs.leanote.com", "faicon": "star"}
+    ],
+    "PersonalLinks": [
+        {"Title": "github", "Url": "http://github.com", "faicon": "github-alt"},
+        {"Title": "weibo", "Url": "http://weibo.com", "faicon": "weibo"},
+        {"Title": "teitter", "Url": "http://teitter.com", "faicon": "teitter"},
+        {"Title": "weixin", "Url": "http://weixin.com", "faicon": "weixin"},
+        {"Title": "leanote", "Url": "http://leanote.com", "faicon": "star"}
+    ]
+}
